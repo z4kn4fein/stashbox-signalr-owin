@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Client;
+using Microsoft.AspNet.SignalR.Client.Transports;
 using Microsoft.AspNet.SignalR.Hubs;
+using Microsoft.Owin.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Owin;
+using SignalR.Tests.Common;
 using Stashbox.AspNet.SignalR;
 using Stashbox.Infrastructure;
 
@@ -130,6 +136,39 @@ namespace Stashbox.SignalR.Tests
             Assert.IsFalse(hub.Disposed);
         }
 
+        [TestMethod]
+        public async Task SignalRExtensionTests_Integration()
+        {
+            using (var host = TestServer.Create(app =>
+            {
+                var container = new StashboxContainer();
+                container.RegisterType<ITest, Test>();
+                var config = new HubConfiguration();
+
+                app.UseStashboxSignalRWithTypes(container, config, typeof(TestHub2));
+                app.MapSignalR(config);
+            }))
+            using (var hubConnection = new HubConnection("http://test"))
+            {
+                var proxy = hubConnection.CreateHubProxy("TestHub2");
+
+                var tcs = new TaskCompletionSource<string>();
+
+                proxy.On("addMessage", data =>
+                {
+                    tcs.SetResult(data);
+                });
+
+                await hubConnection.Start(new AutoTransport(new MemoryHost(host.Handler)));
+
+                await proxy.Invoke("Send", "hello");
+
+                var result = await tcs.Task;
+
+                Assert.AreEqual("hello", result);
+            }
+        }
+
         public interface ITest
         { }
 
@@ -167,6 +206,19 @@ namespace Stashbox.SignalR.Tests
             public TestConnection(ITest test)
             {
                 this.Test = test;
+            }
+        }
+
+        public class TestHub2 : Hub
+        {
+            public TestHub2(ITest test)
+            {
+
+            }
+
+            public Task Send(string message)
+            {
+                return this.Clients.All.addMessage(message);
             }
         }
     }

@@ -8,12 +8,12 @@ using Stashbox.Utils;
 namespace Stashbox.Infrastructure
 {
     /// <summary>
-    /// Holds the <see cref="IStashboxContainer"/> extension methods for SignalR OWIN.
+    /// Holds the <see cref="IStashboxContainer"/> extension methods for SignalR integration.
     /// </summary>
-    public static class StashboxContainerSignalROwinExtensions
+    public static class AppBuilderSignalRExtensions
     {
         /// <summary>
-        /// Adds <see cref="StashboxContainer"/> as the default dependency resolver and the default <see cref="IHubActivator"/>, also registers the available <see cref="IHub"/> and <see cref="PersistentConnection"/> implementations.
+        /// Adds the <see cref="IStashboxContainer"/> as the default dependency resolver and the default <see cref="IHubActivator"/>, also registers the available <see cref="IHub"/> and <see cref="PersistentConnection"/> implementations.
         /// </summary>
         /// <param name="container">The container.</param>
         /// <param name="config">The hub configuration.</param>
@@ -35,7 +35,7 @@ namespace Stashbox.Infrastructure
         }
 
         /// <summary>
-        /// Adds <see cref="StashboxContainer"/> as the default dependency resolver and the default <see cref="IHubActivator"/>, also registers the available <see cref="IHub"/> and <see cref="PersistentConnection"/> implementations.
+        /// Adds the <see cref="IStashboxContainer"/> as the default dependency resolver and the default <see cref="IHubActivator"/>, also registers the available <see cref="IHub"/> and <see cref="PersistentConnection"/> implementations.
         /// </summary>
         /// <param name="container">The container.</param>
         /// <param name="config">The hub configuration.</param>
