@@ -7,6 +7,9 @@ using Stashbox.Utils;
 
 namespace Stashbox.Infrastructure
 {
+    /// <summary>
+    /// Holds the <see cref="IStashboxContainer"/> extension methods for SignalR OWIN.
+    /// </summary>
     public static class StashboxContainerSignalROwinExtensions
     {
         /// <summary>
