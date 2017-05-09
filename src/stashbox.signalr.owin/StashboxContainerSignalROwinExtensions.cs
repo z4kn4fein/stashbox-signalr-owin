@@ -27,8 +27,8 @@ namespace Stashbox.Infrastructure
             Shield.EnsureNotNull(container, nameof(container));
             Shield.EnsureNotNull(config, nameof(config));
 
-            container.RegisterInstance<Microsoft.AspNet.SignalR.IDependencyResolver>(new StashboxDependencyResolver(container));
-            container.RegisterInstance<IHubActivator>(new StashboxHubActivator(container));
+            container.RegisterSingleton<Microsoft.AspNet.SignalR.IDependencyResolver, StashboxDependencyResolver>();
+            container.RegisterSingleton<IHubActivator, StashboxHubActivator>();
             config.Resolver = container.Resolve<Microsoft.AspNet.SignalR.IDependencyResolver>();
 
             return container.RegisterHubs(assemblies).RegisterPersistentConnections(assemblies);
@@ -49,8 +49,8 @@ namespace Stashbox.Infrastructure
             Shield.EnsureNotNull(container, nameof(container));
             Shield.EnsureNotNull(config, nameof(config));
 
-            container.RegisterInstance<Microsoft.AspNet.SignalR.IDependencyResolver>(new StashboxDependencyResolver(container));
-            container.RegisterInstance<IHubActivator>(new StashboxHubActivator(container));
+            container.RegisterSingleton<Microsoft.AspNet.SignalR.IDependencyResolver, StashboxDependencyResolver>();
+            container.RegisterSingleton<IHubActivator, StashboxHubActivator>();
             config.Resolver = container.Resolve<Microsoft.AspNet.SignalR.IDependencyResolver>();
 
             return container.RegisterHubs(types).RegisterPersistentConnections(types);
