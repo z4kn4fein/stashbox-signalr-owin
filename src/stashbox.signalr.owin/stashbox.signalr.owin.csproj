@@ -54,11 +54,11 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Stashbox, Version=2.5.6.0, Culture=neutral, PublicKeyToken=9778e33426732b68, processorArchitecture=MSIL">
-      <HintPath>..\packages\Stashbox.2.5.6\lib\net45\Stashbox.dll</HintPath>
+    <Reference Include="Stashbox, Version=2.5.7.0, Culture=neutral, PublicKeyToken=9778e33426732b68, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stashbox.2.5.7\lib\net45\Stashbox.dll</HintPath>
     </Reference>
-    <Reference Include="Stashbox.AspNet.SignalR, Version=1.1.24.0, Culture=neutral, PublicKeyToken=9778e33426732b68, processorArchitecture=MSIL">
-      <HintPath>..\packages\Stashbox.AspNet.SignalR.1.1.24\lib\net45\Stashbox.AspNet.SignalR.dll</HintPath>
+    <Reference Include="Stashbox.AspNet.SignalR, Version=1.1.25.0, Culture=neutral, PublicKeyToken=9778e33426732b68, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stashbox.AspNet.SignalR.1.1.25\lib\net45\Stashbox.AspNet.SignalR.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,6 +75,7 @@
     <Compile Include="StashboxContainerSignalROwinExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
