@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.SignalR;
+﻿using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Client;
 using Microsoft.AspNet.SignalR.Client.Transports;
 using Microsoft.AspNet.SignalR.Hubs;
@@ -10,7 +7,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Owin;
 using SignalR.Tests.Common;
 using Stashbox.AspNet.SignalR;
-using Stashbox.Infrastructure;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Stashbox.SignalR.Tests
 {

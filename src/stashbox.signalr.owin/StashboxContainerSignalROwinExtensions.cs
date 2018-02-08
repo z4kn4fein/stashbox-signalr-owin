@@ -1,11 +1,11 @@
-﻿using System;
-using System.Reflection;
-using Microsoft.AspNet.SignalR;
+﻿using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Stashbox.AspNet.SignalR;
 using Stashbox.Utils;
+using System;
+using System.Reflection;
 
-namespace Stashbox.Infrastructure
+namespace Stashbox
 {
     /// <summary>
     /// Holds the <see cref="IStashboxContainer"/> extension methods for SignalR integration.

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Reflection;
-using Microsoft.AspNet.SignalR;
+﻿using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
-using Stashbox.Infrastructure;
+using Stashbox;
 using Stashbox.Utils;
+using System;
+using System.Reflection;
 
 namespace Owin
 {
