@@ -84,7 +84,7 @@ namespace Stashbox.SignalR.Tests
         {
             var config = new HubConfiguration();
             var container = new StashboxContainer().AddOwinSignalR(config);
-            container.RegisterType<ITest, Test>();
+            container.Register<ITest, Test>();
             container.Resolve<Microsoft.AspNet.SignalR.IDependencyResolver>().Register(typeof(ITest), () => new Test2());
 
             Assert.IsInstanceOfType(container.Resolve<Microsoft.AspNet.SignalR.IDependencyResolver>().GetService(typeof(ITest)), typeof(Test));
@@ -95,7 +95,7 @@ namespace Stashbox.SignalR.Tests
         {
             var config = new HubConfiguration();
             var container = new StashboxContainer().AddOwinSignalR(config);
-            container.RegisterType<ITest, Test>();
+            container.Register<ITest, Test>();
             container.Resolve<Microsoft.AspNet.SignalR.IDependencyResolver>().Register(typeof(ITest), () => new Test2());
 
             var services = container.Resolve<Microsoft.AspNet.SignalR.IDependencyResolver>().GetServices(typeof(ITest));
@@ -112,7 +112,7 @@ namespace Stashbox.SignalR.Tests
             TestHub hub;
             using (var container = new StashboxContainer())
             {
-                container.RegisterType<ITest, Test>();
+                container.Register<ITest, Test>();
                 container.AddOwinSignalR(config, typeof(TestHub).Assembly);
                 hub = (TestHub)container.Resolve<Microsoft.AspNet.SignalR.IDependencyResolver>().GetService(typeof(TestHub));
             }
@@ -127,7 +127,7 @@ namespace Stashbox.SignalR.Tests
             TestHub hub;
             using (var container = new StashboxContainer())
             {
-                container.RegisterType<ITest, Test>();
+                container.Register<ITest, Test>();
                 container.AddOwinSignalR(config, typeof(TestHub).Assembly);
                 hub = (TestHub)container.Resolve<IHubActivator>().Create(new HubDescriptor { HubType = typeof(TestHub) });
             }
@@ -141,7 +141,7 @@ namespace Stashbox.SignalR.Tests
             using (var host = TestServer.Create(app =>
             {
                 var container = new StashboxContainer();
-                container.RegisterType<ITest, Test>();
+                container.Register<ITest, Test>();
                 var config = new HubConfiguration();
 
                 app.UseStashboxSignalRWithTypes(container, config, typeof(TestHub2));

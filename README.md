@@ -9,10 +9,10 @@ public class Startup
     {
         //configure container
         var container = new StashboxContainer();
-        container.RegisterType<IService1, Service1>();
+        container.Register<IService1, Service1>();
         
         //register the custom hubs
-        container.RegisterType<CustomHub>(context => context.WithoutDisposalTracking());
+        container.Register<CustomHub>(context => context.WithoutDisposalTracking());
         
         var config = new HubConfiguration();
 
